@@ -9,12 +9,12 @@ public class SinusMeta implements NumberSourceMeta<Sinus> {
 		return "Sinus";
 	}
 
-	public CharSequence toXml(Sinus numberSource, NumberSourceResolver resolver) {
+	public CharSequence toXml(final Sinus numberSource, final NumberSourceResolver resolver) {
 		// TODO implement
 		return null;
 	}
 
-	public Sinus toNumberSource(String xml, NumberSourceResolver resolver) {
+	public Sinus toNumberSource(final String xml, final NumberSourceResolver resolver) {
 		// TODO implement
 		return null;
 	}

@@ -17,14 +17,14 @@ public class DynamicSubGraph implements NumberSource {
 	/** This is the last (lowest) NumberSource object in this graph. */
 	private NumberSource output;
 	
-	private List<Connection> connectionList=new ArrayList<Connection>();
+	private final List<Connection> connectionList=new ArrayList<Connection>();
 
-	public int read(double[] buffer) {
+	public int read(final double[] buffer) {
 		return output.read(buffer);
 	}
 	
-	public void connect(NumberSource input, NumberSource target, int idx) {
-		Connection con=new Connection();
+	public void connect(final NumberSource input, final NumberSource target, final int idx) {
+		final Connection con=new Connection();
 		con.input=input;
 		con.connectedTo=target;
 		con.atIdx=idx;
@@ -32,7 +32,7 @@ public class DynamicSubGraph implements NumberSource {
 		target.setInput(input, idx);
 	}
 
-	public void setInput(NumberSource inputSource, int idx) {
+	public void setInput(final NumberSource inputSource, final int idx) {
 		// TODO implement usefull editor features...
 		// still not sure what usefull is :/
 	}

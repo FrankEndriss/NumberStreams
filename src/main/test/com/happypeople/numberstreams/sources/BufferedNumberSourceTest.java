@@ -16,7 +16,8 @@ public class BufferedNumberSourceTest {
 	@Before
 	public void setUp() throws Exception {
 		source=new SequentialNumberSource();
-		out=new BufferedNumberSource(source, MIN_LEFT);
+		out=new BufferedNumberSource(MIN_LEFT);
+		out.setInput(source, 0);
 	}
 
 	@Test

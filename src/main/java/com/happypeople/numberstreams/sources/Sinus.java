@@ -28,7 +28,7 @@ public class Sinus implements NumberSource {
 		return buffer.length;
 	}
 
-	public void setInput(NumberSource inputSource, int idx) {
+	public void setInput(final NumberSource inputSource, final int idx) {
 		throw new IllegalArgumentException("Sinus does not support inputs");
 	}
 

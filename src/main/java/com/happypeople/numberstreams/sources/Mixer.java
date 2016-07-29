@@ -13,12 +13,13 @@ public class Mixer implements NumberSource {
 
 	public int read(final double[] buffer) {
 
-		int idx=0;
+		boolean firstLoop=true;
 		final double[] lBuf=new double[buffer.length];
-		for(NumberSource input : inputs.values()) {
-			if(idx==0)
+		for(final NumberSource input : inputs.values()) {
+			if(firstLoop) {
 				input.read(buffer);
-			else {
+				firstLoop=false;
+			} else {
 				input.read(lBuf);
 				for(int i=0; i<lBuf.length; i++)
 					buffer[i]+=lBuf[i];
@@ -28,7 +29,7 @@ public class Mixer implements NumberSource {
 		return buffer.length;
 	}
 
-	public void setInput(NumberSource inputSource, int idx) {
+	public void setInput(final NumberSource inputSource, final int idx) {
 		inputs.put(idx, inputSource);
 	}
 

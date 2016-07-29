@@ -12,4 +12,8 @@ public class SequentialNumberSource implements NumberSource {
 		return buffer.length;
 	}
 
+	public void setInput(final NumberSource inputSource, final int idx) {
+		throw new RuntimeException("no input supported");
+	}
+
 }

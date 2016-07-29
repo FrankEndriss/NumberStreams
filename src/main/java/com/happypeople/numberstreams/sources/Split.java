@@ -11,23 +11,23 @@ import com.happypeople.numberstreams.NumberSource;
  */
 public class Split implements NumberSource {
 
-	private InputBuffer input;
-	private LinkedList<double[]> bufferList=new LinkedList<double[]>();
+	private final InputBuffer input;
+	private final LinkedList<double[]> bufferList=new LinkedList<double[]>();
 
-	private Split(InputBuffer input) {
+	private Split(final InputBuffer input) {
 		this.input=input;
 	}
 	
-	private void addBuffer(double[] buffer) {
+	private void addBuffer(final double[] buffer) {
 		bufferList.add(buffer);
 	}
 
-	public int read(double[] buffer) {
+	public int read(final double[] buffer) {
 		if(bufferList.size()==0)
 			input.fetchNext(buffer.length);
 
-		double[] sigBuffer=bufferList.removeFirst();
-		int ret=Math.min(sigBuffer.length, buffer.length);
+		final double[] sigBuffer=bufferList.removeFirst();
+		final int ret=Math.min(sigBuffer.length, buffer.length);
 		// TODO warn about different lengths of sigBuffer and buffer, since that would cause
 		// data loss!
 		// Or better: implement handling of that case.
@@ -35,9 +35,9 @@ public class Split implements NumberSource {
 		return ret;
 	}
 
-	public static NumberSource[] createSplits(NumberSource input, int splitCount) {
-		Split[] ret=new Split[splitCount];
-		InputBuffer inputBuffer=new InputBuffer(input, ret);
+	public static NumberSource[] createSplits(final NumberSource input, final int splitCount) {
+		final Split[] ret=new Split[splitCount];
+		final InputBuffer inputBuffer=new InputBuffer(input, ret);
 		
 		for(int i=0; i<splitCount; i++)
 			ret[i]=new Split(inputBuffer);
@@ -47,28 +47,28 @@ public class Split implements NumberSource {
 	
 	private static class InputBuffer {
 		private NumberSource source;
-		private Split[] splits;
+		private final Split[] splits;
 
 
-		InputBuffer(NumberSource source, Split[] splits) {
+		InputBuffer(final NumberSource source, final Split[] splits) {
 			this.source=source;
 			this.splits=splits;
 		}
 		
-		public void fetchNext(int size) {
+		public void fetchNext(final int size) {
 			final double[] signalBuffer=new double[size];
 			source.read(signalBuffer);
 			
-			for(Split split : splits)
+			for(final Split split : splits)
 				split.addBuffer(signalBuffer);
 		}
 		
-		public void setInput(NumberSource input) {
+		public void setInput(final NumberSource input) {
 			this.source=input;
 		}
 	}
 
-	public void setInput(NumberSource inputSource, int idx) {
+	public void setInput(final NumberSource inputSource, final int idx) {
 		if(idx==0)
 			input.setInput(inputSource);
 		else

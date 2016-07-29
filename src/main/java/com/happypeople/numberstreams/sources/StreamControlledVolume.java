@@ -28,7 +28,7 @@ public class StreamControlledVolume implements NumberSource {
 
 	public final static int IDX_BASE=0;
 	public final static int IDX_VOLUME=1;
-	public void setInput(NumberSource inputSource, int idx) {
+	public void setInput(final NumberSource inputSource, final int idx) {
 		if(idx==IDX_BASE)
 			inputSignal=inputSource;
 		else if(idx==IDX_VOLUME)

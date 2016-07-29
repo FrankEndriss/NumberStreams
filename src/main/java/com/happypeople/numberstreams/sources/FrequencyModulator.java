@@ -40,7 +40,7 @@ public class FrequencyModulator implements NumberSource {
 	public final static int IDX_BASE=0;
 	public final static int IDX_MOD=1;
 
-	public void setInput(NumberSource inputSource, int idx) {
+	public void setInput(final NumberSource inputSource, final int idx) {
 		if(idx==IDX_BASE)  {
 			this.base=new BufferedNumberSource(minModulatorValue);
 			this.base.setInput(inputSource, 0);

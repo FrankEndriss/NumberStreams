@@ -19,7 +19,7 @@ public class AdjustableVolume implements NumberSource {
 		return len;
 	}
 	
-	public void setInput(NumberSource inputSource, int idx) {
+	public void setInput(final NumberSource inputSource, final int idx) {
 		if(idx==0)
 			this.input=inputSource;
 		else

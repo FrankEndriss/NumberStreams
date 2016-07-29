@@ -10,7 +10,7 @@ import com.happypeople.numberstreams.sources.SinusMeta;
  */
 public class NumberSourceMetaResolver {
 	
-	private Map<Class<? extends NumberSource>, NumberSourceMeta<? extends NumberSource>> map=
+	private final Map<Class<? extends NumberSource>, NumberSourceMeta<? extends NumberSource>> map=
 			new HashMap<Class<? extends NumberSource>, NumberSourceMeta<? extends NumberSource>>();
 	
 	{
@@ -18,11 +18,11 @@ public class NumberSourceMetaResolver {
 		map.put(Sinus.class, new SinusMeta());
 	}
 
-	public <T extends NumberSource> NumberSourceMeta<T> getNumberSourceMeta(T numberSource) {
+	public <T extends NumberSource> NumberSourceMeta<T> getNumberSourceMeta(final T numberSource) {
 		return (NumberSourceMeta<T>) map.get(numberSource.getClass());
 	}
 
-	public <T extends NumberSource> NumberSourceMeta<T> getNumberSourceMeta(Class<T> numberSourceClass) {
+	public <T extends NumberSource> NumberSourceMeta<T> getNumberSourceMeta(final Class<T> numberSourceClass) {
 		return (NumberSourceMeta<T>) map.get(numberSourceClass);
 	}
 
