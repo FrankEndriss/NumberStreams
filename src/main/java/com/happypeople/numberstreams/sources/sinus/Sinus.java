@@ -1,9 +1,10 @@
-package com.happypeople.numberstreams.sources;
+package com.happypeople.numberstreams.sources.sinus;
 
 import com.happypeople.numberstreams.NumberSource;
 
 public class Sinus implements NumberSource {
-	
+	private static final long serialVersionUID = 1L;
+
 	private final double lenOfFullCircle;
 	private final double lenOfFullCircleDivPI;
 	private double lastOffset=-0.5;

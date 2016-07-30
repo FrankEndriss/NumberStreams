@@ -1,15 +1,17 @@
-package com.happypeople.numberstreams.sources;
+package com.happypeople.numberstreams.sources.volume;
 
 import com.happypeople.numberstreams.NumberSource;
 
 /** A AdjustableVolume object can be used to set the volume of another NumberSource.
  */
-public class AdjustableVolume implements NumberSource {
-	private NumberSource input;
-	private double multiplicator=1;
+public class Volume implements NumberSource {
+	private static final long serialVersionUID = 1L;
 
-	public AdjustableVolume(final NumberSource input) {
-		this.input=input;
+	private NumberSource input;
+	private final double multiplicator;
+
+	public Volume(final double volume) {
+		this.multiplicator=volume;
 	}
 
 	public int read(final double[] buffer) {
@@ -25,12 +27,4 @@ public class AdjustableVolume implements NumberSource {
 		else
 			throw new IllegalArgumentException("supporting only one input");
 	}
-
-	/** This sets the volume as a multiplicator to the original signal
-	 * @param multiplicator
-	 */
-	public void setMultiplicator(final double multiplicator) {
-		this.multiplicator=multiplicator;
-	}
-
 }

@@ -1,11 +1,13 @@
-package com.happypeople.numberstreams.sources;
+package com.happypeople.numberstreams.sources.frequencymodulator;
 
 import com.happypeople.numberstreams.NumberSource;
 
 /** This class adds buffering capabilities to a NumberSource.
  * One can re-read values from a buffer, and read ahead using the read(int offset) method.
  */
-public class BufferedNumberSource implements NumberSource {
+class BufferedNumberSource implements NumberSource {
+	private static final long serialVersionUID = 1L;
+
 	private NumberSource source;
 	private final int minLeftBufferSize;
 	private double[] internalBuffer;

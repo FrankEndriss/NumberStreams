@@ -1,4 +1,4 @@
-package com.happypeople.numberstreams.sources;
+package com.happypeople.numberstreams.sources.frequencymodulator;
 
 import com.happypeople.numberstreams.NumberSource;
 

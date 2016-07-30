@@ -1,4 +1,4 @@
-package com.happypeople.numberstreams.sources;
+package com.happypeople.numberstreams.sources.mixer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +8,7 @@ import com.happypeople.numberstreams.NumberSource;
 /** A Mixer mixes up a group of NumberSource into one NumberSource
  */
 public class Mixer implements NumberSource {
+	private static final long serialVersionUID = 1L;
 
 	private final Map<Integer, NumberSource> inputs=new HashMap<Integer, NumberSource>();
 
@@ -30,7 +31,10 @@ public class Mixer implements NumberSource {
 	}
 
 	public void setInput(final NumberSource inputSource, final int idx) {
-		inputs.put(idx, inputSource);
+		if(inputSource!=null)
+			inputs.put(idx, inputSource);
+		else
+			inputs.remove(idx);
 	}
 
 }

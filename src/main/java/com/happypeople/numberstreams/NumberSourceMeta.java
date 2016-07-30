@@ -6,22 +6,16 @@ package com.happypeople.numberstreams;
 public interface NumberSourceMeta<T extends NumberSource> {
 	
 	/**
-	 * @return the type specifier of <T> used in XML serialization, usually the classname
+	 * @return the class object of the NumberSource
 	 */
-	public String getNumberSourceType();
+	public Class<T> getNumberSourceType();
 	
-	/** Creates the xml of NumberSource numberSource
-	 * @param numberSource the NumberSource to serialize
-	 * @param resolver the resolver to get/create IDs of referenced NumberSources
-	 * @return
+	/** Creates a new object of type t, initialized to given args values.
+	 * Could be modeled "nicer" if we create/define a constructor-argument-type, and use this here.
+	 * Or create a type ConstructorArgumentDescriptor, and use that. But this seems like overkill...
+	 * Java reflection, and others like spring bean instantiation use simply a Object[] arg, too.
+	 * @return the new NumberSource object
 	 */
-	public CharSequence toXml(T numberSource, NumberSourceResolver resolver);
-	
-	/** Called to deserialize a NumberSource object of type getNumberSourceType()
-	 * @param xml the xml written by toXml(...)
-	 * @param resolver resolver used to resolve references
-	 * @return the newly created NumberSource object
-	 */
-	public T toNumberSource(String xml, NumberSourceResolver resolver);
+	public T createNew(Object[] args);
 
 }

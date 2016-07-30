@@ -1,4 +1,4 @@
-package com.happypeople.numberstreams.sources;
+package com.happypeople.numberstreams.sources.frequencymodulator;
 
 import static org.junit.Assert.*;
 
@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.happypeople.numberstreams.NumberSource;
+import com.happypeople.numberstreams.sources.SequentialNumberSource;
+import com.happypeople.numberstreams.sources.frequencymodulator.BufferedNumberSource;
 
 public class BufferedNumberSourceTest {
 	private NumberSource source;
